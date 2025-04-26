@@ -1,0 +1,19 @@
+import random
+
+answer = random.randrange(1,101)
+counter = 0
+low = 1
+high = 100
+while 1:
+    counter += 1
+    num = int(input("输入个数："))
+    if num < answer:
+        low = num
+        print(f"{low}-{high},再来")
+    elif num > answer:
+        high = num
+        print(f"{low}-{high},再来")
+    else:
+        print("猜对了")
+        break
+print(f"你用了{counter}次")
