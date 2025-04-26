@@ -1,0 +1,37 @@
+import random #5人，5狼，5神(复杂爱神不属于任何阵营，简单爱神属于神)
+
+names = []
+roles = ["狼人","狼人","狼人","狼人","白狼王","平民","平民","平民","白痴","平民","爱神","守卫","预言家","女巫","猎人"]
+random.shuffle(roles)
+
+num = int(input("请输入玩家人数:"))
+if num != len(roles):
+    print("人数不对")
+else:
+    for i in range(num):
+        name = input("请玩家输入名字：")
+        names.append((name))
+        print(f"玩家{i+1}，你的身份是这个:{roles[i]}")
+        print("_" * 20)
+        input("看完了?按回车然后给下一位玩家确认身份")
+        print("\n" * 40)
+
+    print("所有玩家查看完毕，开始游戏！天黑请闭眼")
+
+while True:
+    check = input("你是法官吗？(Y/N):")
+    if check == "Y" or check == "y":
+        for i in range(num):
+            print(f"{names[i]}:{roles[i]}",end = "\t")
+            if (i + 1) % 4 == 0:
+                print()
+        break
+
+
+for night in range(1, 6):
+    print(f"\nNight {night}")
+    kill = input("杀谁: ")
+    investigate = input("查谁: ")
+    potions = input("毒谁/救谁: ")
+    protect = input("守谁: ")
+    print(f"杀: {kill}, 查: {investigate}, 毒/救: {potions}, 守: {protect}")
